@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NoteObject : MonoBehaviour
 {
+
+    private bool wasHit;
     public bool canBePressed;
 
     public KeyCode keyToPress;
@@ -19,9 +21,11 @@ public class NoteObject : MonoBehaviour
     {
         if(Input.GetKeyDown(keyToPress)){
             if(canBePressed){
+                wasHit = true;
                 gameObject.SetActive(false);
+                
 
-                //GameManager.instance.NoteHit();
+                GameManager.instance.NoteHit(); //calls the NoteHit method from the GameManager
             }
         }
     }
@@ -35,8 +39,10 @@ public class NoteObject : MonoBehaviour
 
     //when the note exits the activator, it can't be pressed
     public void OnTriggerExit2D(Collider2D other){
-        if(other.tag == "Activator"){
+        if(other.tag == "Activator" && !wasHit){
             canBePressed = false;
+
+            GameManager.instance.NoteMissed(); //calls the NoteMissed method from the GameManager
         }
     }
 }

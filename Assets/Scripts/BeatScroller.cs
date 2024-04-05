@@ -19,9 +19,9 @@ public class BeatScroller : MonoBehaviour
     void Update()
     {
         if(!hasStarted){
-            if(Input.anyKeyDown){
+          /* if(Input.anyKeyDown){
                 hasStarted = true;
-            }
+            } */
         } else {
             transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f); // Move the object down to the tempo Vector3(x, y, z))
         }
