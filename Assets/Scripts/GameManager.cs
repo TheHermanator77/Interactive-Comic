@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("Hit On Time");
+        //Debug.Log("Hit On Time");
 
         //we dont want an infinite multiplier, so we check if the currentMultiplier is less than the length of the array
         if(currentMultiplier - 1 < multiplierThresholds.Length)
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void NoteMissed()
     {
-        Debug.Log("Missed Note");
+        //Debug.Log("Missed Note");
 
         //reset the multiplier
         currentMultiplier = 1;
