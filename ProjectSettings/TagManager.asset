@@ -4,17 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Activator
+  - Bounds
+  - Walls
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Walls
+  - Bounds
+  - Player
   - 
   - 
   - 
