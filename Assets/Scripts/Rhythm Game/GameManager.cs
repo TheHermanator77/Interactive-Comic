@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public AudioSource theMusic;
 
-    public bool startPlaying;
+    public bool startPlaying = false;
 
     public BeatScroller theBS;
 
@@ -23,29 +24,23 @@ public class GameManager : MonoBehaviour
 
     public Text scoreText;
     public Text multiText;
+    public Button startButton;
+    public TextMeshProUGUI instructions;
 
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        if(startPlaying == true){
+            currentMultiplier = 1;
+        }
 
-        currentMultiplier = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!startPlaying)
-        {
-            //Start playing when the player presses a key
-            if(Input.anyKeyDown)
-            {
-                startPlaying = true; //start the game, just a boolean for me :D
-                theBS.hasStarted = true; //scroll the notes
-                theMusic.Play(); //start the music
-            }
-        }
     }
 
     public void NoteHit()
@@ -81,6 +76,16 @@ public class GameManager : MonoBehaviour
         multiplierTracker = 0;
 
         multiText.text = "Multiplier: x" + currentMultiplier;
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("Game Started");
+        startButton.gameObject.SetActive(false);
+        instructions.gameObject.SetActive(false);
+        startPlaying = true;
+        theBS.hasStarted = true;
+        theMusic.Play();
     }
 
 }
