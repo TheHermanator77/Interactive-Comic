@@ -4,82 +4,73 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    // Used in overall movement
     private Rigidbody2D rb;
     private BoxCollider2D coll;
+    private Animator anim;
+
+    private enum MovementState {  idle, runningUp, runningDown }
 
     private float dirX = 0f;
     private float dirY = 0f;
 
-    [SerializeField] private float Speed = 7f;
-
-    // Used in Tunneling
-    private bool canTunnel;
-    //private float startTime = 0f;
-   // private float timeHeld;
+    [SerializeField] private float Speed = 4f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Gives function to input system
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * Speed, rb.velocity.y);
 
         dirY = Input.GetAxisRaw("Vertical");
         rb.velocity = new Vector2(rb.velocity.x, dirY * Speed);
 
-        // Allows Tunneling Right
-        if (Input.GetKeyDown(KeyCode.Space) && canTunnel == true && dirX > 0.1f)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Space Was Pressed Facing Right");
-            transform.position = new Vector3(transform.position.x + 2.0f, transform.position.y, transform.position.z);
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
-        // Allows Tunneling Left
-        if(Input.GetKeyDown(KeyCode.Space) && canTunnel == true && dirX < 0f)
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            Debug.Log("Space Was Pressed Facing Left");
-            transform.position = new Vector3(transform.position.x - 2.0f, transform.position.y, transform.position.z);
+            StartCoroutine(endTunnel());
         }
 
-        // Allows Tunneling Up
-        if (Input.GetKeyDown(KeyCode.Space) && canTunnel == true && dirY > 0.1f)
-        {
-            Debug.Log("Space Was Pressed Facing Up");
-            transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
-        }
-
-        // Allows Tunneling Down
-        if (Input.GetKeyDown(KeyCode.Space) && canTunnel == true && dirY < 0f)
-        {
-            Debug.Log("Space Was Pressed Facing Down");
-            transform.position = new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z);
-        }
+        UpdateAnimationState(); // Changes the animation
     }
 
-    // When contact with a wall is detected, canTunnel = true.
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void UpdateAnimationState()
     {
-        if (collision.gameObject.CompareTag("Walls"))
+        MovementState state;
+
+        // Determines which animation plays when
+
+        if (dirY > 0f)
         {
-            Debug.Log("Can Tunnel");
-            canTunnel = true;
+            state = MovementState.runningUp;
         }
+        else if (dirY < 0f)
+        {
+            state = MovementState.runningDown;
+        }
+        else
+        {
+            state = MovementState.idle;
+        }
+
+        anim.SetInteger("state", (int)state);
     }
 
-    // When there is no longer contact with a wall, canTunnel = false.
-    private void OnCollisionExit2D(Collision2D collision)
+    IEnumerator endTunnel()
     {
-        if (collision.gameObject.CompareTag("Walls"))
-        {
-            Debug.Log("Can't Tunnel!!");
-            canTunnel = false;
-        }
+        yield return new WaitForSeconds(0.5f);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: red_pressed
+  m_Name: Stone wall tilemap_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 4c8e3dfe5e0244104a9e5382d0628667, type: 3}
+  m_Sprite: {fileID: -1555537572, guid: ad2ddd44fe9ac40028718a132ee7bf54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
