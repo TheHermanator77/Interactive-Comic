@@ -43,8 +43,6 @@ public class BellaMovement : MonoBehaviour
 
         transform.position = new Vector3(-1.48f, -3.4211f, 0f); // Move the object down to the tempo Vector3(x, y, z))
         showBella();
-
-        Debug.Log("Moved Bella to Green");
     }
 
     public void Blue(){

@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public int multiplierTracker;
     public int[] multiplierThresholds;
 
-
+    //the current keycode of touch button being pressed
+    public KeyCode colorPressed;
     public Text scoreText;
     public Text multiText;
     public Button startButton;
@@ -36,11 +37,6 @@ public class GameManager : MonoBehaviour
             currentMultiplier = 1;
         }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     public void NoteHit()
@@ -78,6 +74,12 @@ public class GameManager : MonoBehaviour
         multiText.text = "Multiplier: x" + currentMultiplier;
     }
 
+    public void PlayMusic()
+    {
+        Debug.Log("PlayMusic");
+        theMusic.Play();
+    }
+
     public void StartGame()
     {
         Debug.Log("Game Started");
@@ -85,7 +87,40 @@ public class GameManager : MonoBehaviour
         instructions.gameObject.SetActive(false);
         startPlaying = true;
         theBS.hasStarted = true;
-        theMusic.Play();
+        Debug.Log("Invoke PlayMusic");
+        Invoke("PlayMusic", 1f);
     }
+
+
+    //green pressed
+    public void Green(){
+        colorPressed = KeyCode.A;
+        Invoke("Reset", 0.01f);
+    }
+
+    //red pressed   
+    public void Red(){
+        colorPressed = KeyCode.S;
+        Invoke("Reset", 0.01f);
+    }
+
+    //yellow pressed
+    public void Yellow(){
+        colorPressed = KeyCode.D;
+        Invoke("Reset", 0.01f);
+    }
+
+    //blue pressed
+    public void Blue(){
+        colorPressed = KeyCode.F;
+        Invoke("Reset", 0.01f);
+    }
+
+
+    //reset colorPressed
+    public void Reset(){
+        colorPressed = KeyCode.None;
+    }
+    
 
 }

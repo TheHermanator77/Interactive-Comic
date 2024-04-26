@@ -16,7 +16,7 @@ public class EnableTunnelling : MonoBehaviour
     public void TunnellingButton(){
         Debug.Log("Tunnelling Button Enabled");
         //Set scale to 3.1
-        transform.localScale = new Vector3(3.1f, 3.1f, 3.1f);
+        transform.localScale = new Vector3(5f,5f,5f);
     }
 
     public void DisableTunnellingButton(){

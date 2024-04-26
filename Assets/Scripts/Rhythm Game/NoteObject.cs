@@ -26,7 +26,7 @@ public class NoteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(keyToPress)){
+        if(Input.GetKeyDown(keyToPress) || (GameManager.instance.colorPressed == keyToPress)){
             if(canBePressed){
                 wasHit = true;
                 gameObject.SetActive(false);
@@ -129,6 +129,4 @@ public class NoteObject : MonoBehaviour
             GameManager.instance.NoteMissed(); //calls the NoteMissed method from the GameManager
         }
     }
-
-
 }

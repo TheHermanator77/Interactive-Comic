@@ -12,13 +12,6 @@ public class ProfMovement : MonoBehaviour
     {
         instance = this;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Green(){
         transform.position = new Vector3(-1.56f, 3.9f, 0f); // Move the object down to the tempo Vector3(x, y, z))
     }

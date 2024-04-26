@@ -21,7 +21,7 @@ public class ButtonController : MonoBehaviour
     void Update()
     {
 
-        //When key is pressed, change the sprite to pressedImage
+        //When key is pressed, or Button Clicked change the sprite to pressedImage
         if(Input.GetKeyDown(keyToPress))
         {
             theSR.sprite = pressedImage;
