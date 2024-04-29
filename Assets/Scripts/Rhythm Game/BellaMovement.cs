@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BellaMovement : MonoBehaviour
 {
+    //makes the GameManager a singleton, so we can access it from other scripts
+    public static BellaMovement instance;
 
-    public static BellaMovement instance; //makes the GameManager a singleton, so we can access it from other scripts
+    //canvas renderer
+    private CanvasRenderer rend;
 
-    //Render for Bella
-    public Renderer rend;
+    private RectTransform rt;
 
     //Timer for Bella to be Shown
     public float timer = 2f;
@@ -17,6 +19,12 @@ public class BellaMovement : MonoBehaviour
     void Start()
     {
         instance = this;
+        rt = (RectTransform)transform;
+
+        //hide Bella 
+        rend = GetComponent<CanvasRenderer>();
+        //set alpha to 0
+        rend.SetAlpha(0);
     }
 
     // Update is called once per frame
@@ -24,8 +32,8 @@ public class BellaMovement : MonoBehaviour
     {
         //if the timer is less than 0, hide Bella
         if(timer <= 0){
-            rend = GetComponent<Renderer>();
-            rend.enabled = false;
+            rend = GetComponent<CanvasRenderer>();
+            rend.SetAlpha(0);
         } else {
             timer -= Time.deltaTime;
         }
@@ -36,27 +44,27 @@ public class BellaMovement : MonoBehaviour
         //start the timer
         timer = 0.5f;
 
-        rend.enabled = true;
+        rend.SetAlpha(1);
     } 
 
     public void Green(){
-
-        transform.position = new Vector3(-1.48f, -3.4211f, 0f); // Move the object down to the tempo Vector3(x, y, z))
+        
+        rt.anchoredPosition = new Vector2(159f, -326f); 
         showBella();
     }
 
     public void Blue(){
-        transform.position = new Vector3(1.48f, -3.4211f, 0f); // Move the object down to the tempo Vector3(x, y, z))
+        rt.anchoredPosition = new Vector2(56f, -326f); 
         showBella();
     }
 
     public void Red(){
-        transform.position = new Vector3(-0.51f, -3.4211f, 0f); // Move the object down to the tempo Vector3(x, y, z))
+        rt.anchoredPosition = new Vector2(-52f, -326f); 
         showBella();
     }   
 
     public void Yellow(){
-        transform.position = new Vector3(0.51f, -3.4211f, 0f); // Move the object down to the tempo Vector3(x, y, z))
+        rt.anchoredPosition = new Vector2(-156f, -326f); 
         showBella();
     }
 

@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         startPlaying = true;
         theBS.hasStarted = true;
         Debug.Log("Invoke PlayMusic");
-        Invoke("PlayMusic", 1f);
+        Invoke("PlayMusic", 1.5f);
     }
 
 
