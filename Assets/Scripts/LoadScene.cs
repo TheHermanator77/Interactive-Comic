@@ -32,7 +32,7 @@ public class LoadScene : MonoBehaviour
 
     public void loadTunnelling(){
         Debug.Log("Loading Tunnelling Game");
-        SceneManager.LoadScene("TunnellingGame");
+        SceneManager.LoadScene("TunnelGame");
     }  
 
    

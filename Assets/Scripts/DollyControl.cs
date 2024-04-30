@@ -5,6 +5,7 @@ using UnityEngine;
 public class DollyControl : MonoBehaviour
 {
 
+    static public int dollyPosition = 0;
     //cinemachine virtual camera
     public Cinemachine.CinemachineVirtualCamera vcam;
 
@@ -12,7 +13,7 @@ public class DollyControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MoveDolly(dollyPosition);
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class DollyControl : MonoBehaviour
         }
         // Move the dolly to the waypoint
         vcam.GetCinemachineComponent<Cinemachine.CinemachineTrackedDolly>().m_PathPosition = waypoint;
+        dollyPosition = waypoint;
 
     }
 
@@ -106,7 +108,7 @@ public class DollyControl : MonoBehaviour
     }
 
     public void Animation(){
-        EnableAnimation.instance.playAnimation();
+        EnableAnimation.instance.ShowAnimation();
     }
 
     public void Entangle(){

@@ -6,7 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ComicBook.unity
+    guid: 816841bc872b047b3ba7de22e35b0e20
+  - enabled: 1
     path: Assets/Scenes/RhythmGame.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 4e9b0368b17bc4146986d9831135657e
+  - enabled: 1
+    path: Assets/Scenes/EntanglementGame.unity
+    guid: 95125f5add48b434091ab2579c96a9c3
+  - enabled: 1
+    path: Assets/Alukka/Scenes/TunnelGame.unity
+    guid: 9ec2278f61e187642a0a394b57187078
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fa4ef19bc3a694a49acb0ba8c633299f, type: 2}
