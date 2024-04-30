@@ -15,7 +15,9 @@ public class Movement : MonoBehaviour
     public float dirX = 0f;
     public float dirY = 0f;
 
-    [SerializeField] private float Speed = 4f;
+    [SerializeField] private float Speed;
+
+    private bool levelComplete = false;
 
     // Start is called before the first frame update
     void Start()
@@ -93,10 +95,15 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Finish"))
+        if (collision.gameObject.CompareTag("Finish") && !levelComplete)
         {
             rb.bodyType = RigidbodyType2D.Static;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Invoke("CompleteLevel", 2f);
         }
+    }
+
+    private void CompleteLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
