@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Activator
+  - Collider
+  - Note
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - UItop
   - 
   - 
   - 
