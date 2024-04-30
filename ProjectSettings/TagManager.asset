@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Trap
+  - Ground
+  - Citizen
   layers:
   - Default
   - TransparentFX
@@ -11,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Ground
   - 
-  - 
-  - 
+  - Background
   - 
   - 
   - 
@@ -38,6 +42,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3835670129
+    locked: 0
+  - name: Fire
+    uniqueID: 3230437495
+    locked: 0
+  - name: Ground
+    uniqueID: 2930513629
+    locked: 0
+  - name: Wall
+    uniqueID: 2601445961
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Win Screen
+    uniqueID: 3394199133
+    locked: 0
+  - name: Main Menu
+    uniqueID: 2857450999
+    locked: 0
+  - name: Tutorial Screen
+    uniqueID: 3354950983
     locked: 0
