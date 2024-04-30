@@ -29,7 +29,8 @@ public class NoteObject : MonoBehaviour
         if(Input.GetKeyDown(keyToPress) || ((GameManager.instance.colorPressed == keyToPress)) && GameManager.instance.colorPressed != KeyCode.None){
             if(canBePressed){
                 wasHit = true;
-                gameObject.SetActive(false);
+                //Hide note
+                rend.enabled = false;
 
                 //Generate a number 1-3 to choose the animation
                 int rand = UnityEngine.Random.Range(1, 4);

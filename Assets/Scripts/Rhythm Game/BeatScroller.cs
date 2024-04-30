@@ -42,4 +42,10 @@ public class BeatScroller : MonoBehaviour
         currentTime += 10f;
         transform.position -= new Vector3(0f, beatTempo * 10f, 0f);
     }
+
+    public void Reset()
+    {
+        currentTime = 0f;
+        transform.position = new Vector3(0f, -603.5f, 0f);
+    }
 }

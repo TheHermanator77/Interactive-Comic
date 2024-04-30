@@ -49,22 +49,22 @@ public class BellaMovement : MonoBehaviour
 
     public void Green(){
         
-        rt.anchoredPosition = new Vector2(159f, -326f); 
+        rt.anchoredPosition = new Vector2(-216f, -639f); 
         showBella();
     }
 
     public void Blue(){
-        rt.anchoredPosition = new Vector2(56f, -326f); 
+        rt.anchoredPosition = new Vector2(-216f, -639f); 
         showBella();
     }
 
     public void Red(){
-        rt.anchoredPosition = new Vector2(-52f, -326f); 
+        rt.anchoredPosition = new Vector2(-75f, -639f); 
         showBella();
     }   
 
     public void Yellow(){
-        rt.anchoredPosition = new Vector2(-156f, -326f); 
+        rt.anchoredPosition = new Vector2(75F, -639f); 
         showBella();
     }
 

@@ -43,5 +43,19 @@ public class rewind : MonoBehaviour
         theBS.FastForward5();
     }
 
+    public void Reset()
+    {
+        //Reset the game
+        theMusic.time = 0f;
+
+        theBS.Reset();
+
+        //Reset the notes
+        foreach (GameObject note in GameObject.FindGameObjectsWithTag("Note"))
+        {
+            note.SetActive(true);
+        }
+    } 
+
 
 }

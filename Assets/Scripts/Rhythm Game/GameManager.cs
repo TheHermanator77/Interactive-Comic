@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Text multiText;
     public Button startButton;
     public TextMeshProUGUI instructions;
+    public Button continueButton;
 
 
     // Start is called before the first frame update
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
         startPlaying = true;
         theBS.hasStarted = true;
         Debug.Log("Invoke PlayMusic");
-        Invoke("PlayMusic", 1.5f);
+        PlayMusic();
     }
 
 
@@ -120,6 +121,19 @@ public class GameManager : MonoBehaviour
     //reset colorPressed
     public void Reset(){
         colorPressed = KeyCode.None;
+    }
+
+
+    public void EndGame()
+    {
+        Debug.Log("Game Ended");
+        theMusic.Stop();
+        theBS.hasStarted = false;
+        startPlaying = false;
+        instructions.text = "Game Over! \n Your score is: " + currentScore;
+        instructions.gameObject.SetActive(true);
+        continueButton.gameObject.SetActive(true);
+
     }
     
 
