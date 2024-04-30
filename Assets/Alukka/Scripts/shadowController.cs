@@ -81,10 +81,11 @@ public class shadowController : MonoBehaviour
     {
         yield return
 
-        coll.enabled = true;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
 
         yield return new WaitForSeconds(0.5f);
+
+        coll.enabled = true;
 
         if (canTunnel == true)
         {
@@ -105,8 +106,11 @@ public class shadowController : MonoBehaviour
         if (collision.gameObject.CompareTag("Walls"))
         {
             canTunnel = false;
-            isFollowing = true;
-            Debug.Log("Wall Collision");
+        }
+
+        if (collision.gameObject.CompareTag("Background"))
+        {
+            canTunnel = true;
         }
     }
 }

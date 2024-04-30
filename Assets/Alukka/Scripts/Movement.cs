@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private Animator anim;
+    private SpriteRenderer sprite;
 
-    private enum MovementState {  idle, runningUp, runningDown }
+    private enum MovementState {  idle, runningUp, runningDown, run }
 
-    private float dirX = 0f;
-    private float dirY = 0f;
+    public float dirX = 0f;
+    public float dirY = 0f;
 
     [SerializeField] private float Speed = 4f;
 
@@ -21,6 +23,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            coll.enabled = false;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
@@ -52,14 +56,26 @@ public class Movement : MonoBehaviour
 
         // Determines which animation plays when
 
-        if (dirY > 0f)
+        if (dirY > 0.1f)
         {
             state = MovementState.runningUp;
         }
-        else if (dirY < 0f)
+        else if (dirY < -0.1f)
         {
             state = MovementState.runningDown;
         }
+
+        if (dirX > 0.1f)
+        {
+            state = MovementState.run;
+            sprite.flipX = false;
+        }
+        else if (dirX < -0.1f)
+        {
+            state = MovementState.run;
+            sprite.flipX = true;
+        }
+
         else
         {
             state = MovementState.idle;
@@ -70,7 +86,17 @@ public class Movement : MonoBehaviour
 
     IEnumerator endTunnel()
     {
+        coll.enabled = true;
         yield return new WaitForSeconds(0.5f);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
