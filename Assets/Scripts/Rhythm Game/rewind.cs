@@ -41,6 +41,12 @@ public class rewind : MonoBehaviour
         theMusic.time = theMusic.time + 10f;
 
         theBS.FastForward5();
+
+        //Fast forward the notes
+        foreach (GameObject note in GameObject.FindGameObjectsWithTag("Note"))
+        {
+            note.SetActive(true);
+        }
     }
 
     public void Reset()
