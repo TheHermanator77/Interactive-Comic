@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
         theMusic.Stop();
         theBS.hasStarted = false;
         startPlaying = false;
-        instructions.text = "Game Over! \n Your score is: " + currentScore;
+        instructions.text = "Bella and the Professor become entangled and fight in the rhythm game forever. Game Over! \n Your score is: " + currentScore;
         instructions.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
 
